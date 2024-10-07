@@ -39,7 +39,7 @@ def clip_search(search_string):
         # Retrieve the photo ID
         idx = candidates[i][1]
         photo_id = photo_ids_wh[idx]
-        images.append([('plimages/vrcstanford/' + str(photo_id) + '.jpg'),  photo_id])
+        images.append([('images/' + str(photo_id) + '.jpg'),  photo_id])
 #         images.append([('plimages/photogrammar/' + photo_id + '.jpg'), 'https://photogrammar.org/photo/' + photo_id + '/PP'])
     
 #     print(images)
@@ -60,9 +60,10 @@ with gr.Blocks(css = css) as demo:
             btn = gr.Button("Retrieve Images", variant="primary").style(full_width=False)
         with gr.Row(variant="compact"):
             suggest1 = gr.Button("rococo", variant="secondary").style(size="sm")    
-            suggest2 = gr.Button("mothering", variant="secondary").style(size="sm")    
-            suggest3 = gr.Button("furry friends", variant="secondary").style(size="sm")    
-            suggest4 = gr.Button("eating together", variant="secondary").style(size="sm")   
+            suggest2 = gr.Button("brutalism", variant="secondary").style(size="sm")    
+            suggest3 = gr.Button("classical", variant="secondary").style(size="sm")       
+            suggest4 = gr.Button("gothic", variant="secondary").style(size="sm")    
+            suggest5 = gr.Button("eating together", variant="secondary").style(size="sm")   
         gallery = gr.Gallery(
             label=False, show_label=False, elem_id="gallery"
         ).style(grid=[6], height="100%",)
@@ -71,12 +72,13 @@ with gr.Blocks(css = css) as demo:
     suggest2.click(clip_search, inputs=suggest2, outputs=gallery)
     suggest3.click(clip_search, inputs=suggest3, outputs=gallery)
     suggest4.click(clip_search, inputs=suggest4, outputs=gallery)
-
+    suggest5.click(clip_search, inputs=suggest5, outputs=gallery)
     btn.click(clip_search, inputs=search_string, outputs=gallery)
     search_string.submit(clip_search, search_string, gallery)
 
 
 
 if __name__ == "__main__":
-    demo.launch(share=True, server_name='0.0.0.0', server_port=7860)
+    demo.launch(share=False, server_name='0.0.0.0', server_port=7860)
+    demo.close()
 #     demo.launch()
