@@ -10,13 +10,13 @@ device = "mps" if torch.backends.mps.is_available() else "cpu"
 model, preprocess = clip.load("ViT-B/32", device=device)
 print('Using ' + device)
 
-features_path_wh = 'features/'
+features_path = 'features/'
 
 
 
-photo_features_wh = np.load(features_path_wh + "features.npy")
-photo_ids_wh = pd.read_csv(features_path_wh + "photo_ids.csv")
-photo_ids_wh = list(photo_ids_wh['photo_id'])
+photo_features = np.load(features_path + "features.npy")
+photo_ids = pd.read_csv(features_path + "photo_ids.csv")
+photo_ids = list(photo_ids['photo_id'])
 
 
 def clip_search(search_string):
