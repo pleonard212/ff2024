@@ -10,7 +10,7 @@ device = "mps" if torch.backends.mps.is_available() else "cpu"
 model, preprocess = clip.load("ViT-B/32", device=device)
 print('Using ' + device)
 
-features_path_wh = 'plfeatures/vrcstanford/'
+features_path_wh = 'features/'
 
 
 
